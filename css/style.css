@@ -46,10 +46,10 @@ body {
     font-family: 'Caveat', cursive;
 }
 
-ul {
+#display-list {
     border-bottom: 2px solid #4f3961;
     padding-left: 0;
-    list-style-position: inside;
+    list-style-position: none;
 }
 
 li {
@@ -57,41 +57,61 @@ li {
     width: 100%;
     border-radius: 0.5rem;
     font-size: 2rem;
-    padding: 0.5rem;
     margin-bottom: 0.5rem;
     background-color: #fff;
     font-family: 'Caveat', cursive;
     color: #a3234c;
-    display: block;
-    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+} 
+
+.text-content {
+    width: 60%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-li:hover {
-    background-color: #e9e1cc;
+.change-button {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-flow: row nowrap;
+    width: 30%;
+    justify-content: space-evenly;
 }
 
-/* .clicked {
-    text-decoration: line-through;
-} */
-
-/* .change {
+.done,
+.delete {
+    font-family: 'Pacifico', cursive;
+    padding: 0.1rem;
+    font-size: 1rem;
     cursor: pointer;
-    position: absolute;
-    top: 50%;
-    right: 0%;
-    padding: 0 0.25rem;
-    transform: translate(0%, -50%);
-    color: #4f3961;
-    font-size: 1.5rem;
+    margin: 0;
+    outline: none;
+    background-color: #fff;
+    color: #260a3d;
+    border: none;
 }
 
-.change:hover {
+.done:hover,
+.delete:hover {
+       text-decoration: underline;
+}
+
+.done:hover {
+    color: #059405;
+}
+
+.delete:hover {
+    color: #aa0808;
+}
+
+.clicked {
+    text-decoration: line-through;
     color: #260a3d;
 }
-
-.far {
-    display: inline;
-} */
 
 h1,
 p {
@@ -99,7 +119,7 @@ p {
     color: #260a3d;
 }
 
-button {
+#add-to-list {
     font-size: 1.5rem;
     padding: 0.5rem;
     margin-top: 0.5rem;
@@ -112,25 +132,12 @@ button {
     font-family: 'Pacifico', cursive;
 }
 
-/* span {
-    border: 1px solid black;
-}
-
-icon:hover {
-    color: #260a3d;
-}
-
-li {
-    display: flex;
-    
-} */
-
-button:active,
-button:hover {
+#add-to-list:active,
+#add-to-list:hover {
     background-color: #260a3d;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 900px) {
     .container {
         padding: 0 3rem;
     }
@@ -144,8 +151,37 @@ button:hover {
         width: 75%;
     }
 
-    button {
+    #add-to-list {
         margin-top: 0;
         width: 20%;
     }
+
+    /* .text-content {
+        width: 75%;
+    }
+
+    .change-button {
+        width: %;
+    } */
+
+    .done,
+    .delete {
+        font-size: 1.25rem;
+    }
 }
+
+@media (max-width: 400px) {
+    body,
+    .container {
+        background-color: #ea9085;;
+    }
+
+    .container {
+        border: none;
+        width: 100%
+    }
+
+    body {
+        padding: 0 2rem;
+    }
+}   
