@@ -1,4 +1,7 @@
 const addButton = document.getElementById('add-to-list');
+const saveButton = document.querySelector('.save-to-storage');
+const clearButton = document.querySelector('.clear-storage');
+let display =  document.querySelector('#display-list');
 
 addButton.addEventListener('click', function() {
     let newTodo = document.getElementById('input-box').value;
@@ -9,6 +12,15 @@ addButton.addEventListener('click', function() {
     }
     document.getElementById('input-box').value = '';
 });
+
+saveButton.addEventListener('click', function() {
+    localStorage.setItem('todoList', display.innerHTML)
+})
+
+clearButton.addEventListener('click', function() {
+    display.innerHTML = '';
+    localStorage.removeItem('todoList',display.innerHTML)
+})
 
 function addNewTodo(newTodo) {
     let display =  document.querySelector('#display-list');
@@ -49,3 +61,25 @@ function done(span) {
 function remove(list) {
     document.querySelector('#display-list').removeChild(list);
 }
+
+function loadTodo() {
+    if(localStorage.getItem('todoList')) {
+        display.innerHTML = localStorage.getItem('todoList');
+        remove();
+    }
+}
+
+loadTodo();
+
+
+
+// // var input = document.getElementById("myInput");
+
+// newTodo.addEventListener("keyup", function(event) {
+//   if (event.keyCode === 13) {
+//     // Cancel the default action, if needed
+//     event.preventDefault();
+//     // Trigger the button element with a click
+//     document.getElementById("add-to-list").click();
+//   }
+// });
