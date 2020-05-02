@@ -1,29 +1,51 @@
 const addButton = document.getElementById('add-to-list');
 const saveButton = document.querySelector('.save-to-storage');
 const clearButton = document.querySelector('.clear-storage');
+let input = document.getElementById('input-box');
 let display =  document.querySelector('#display-list');
 
-addButton.addEventListener('click', function() {
-    let newTodo = document.getElementById('input-box').value;
-        if (newTodo === '') {
-        alert('Write something😉');
-    } else {
-        addNewTodo(newTodo);
+//adding event listener to the addButton
+addButton.addEventListener('click', createList);
+
+//adding event listener to the enter key - triggers addButton
+input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        addButton.click();
     }
-    document.getElementById('input-box').value = '';
 });
 
+//exploring alternate way of trigerring keypress. doesn't work at the moment. to be looked into
+// input.addEventListener('keyup', function(keyCode){
+//     if (keyCode === 13) {
+//         createList();
+//     }
+// });
+
+//save todo list to local storage
 saveButton.addEventListener('click', function() {
     localStorage.setItem('todoList', display.innerHTML)
 })
 
+//clear list and clear local storage
 clearButton.addEventListener('click', function() {
     display.innerHTML = '';
     localStorage.removeItem('todoList',display.innerHTML)
 })
 
+//the function that is run when the add button or enter key is clicked
+function createList() {
+    let newTodo = document.getElementById('input-box').value;
+        if (newTodo === '') {
+            alert('Write something😉');
+        } else {
+            addNewTodo(newTodo);
+        }
+        document.getElementById('input-box').value = '';
+}
+
+//function that runs in the createList function. This builds up the html elements.
 function addNewTodo(newTodo) {
-    let display =  document.querySelector('#display-list');
     let list = document.createElement('li');
     let span = document.createElement('span');
     let spanButton = document.createElement('span');
@@ -45,41 +67,39 @@ function addNewTodo(newTodo) {
     spanButton.appendChild(doneButton);
     spanButton.appendChild(deleteButton);
 
-    doneButton.addEventListener('click', function() {
-        done(span);
+    remove();
+
+    done();
+}
+
+//to mark a task done
+function done() {
+    let doneButton = document.querySelectorAll('.done');
+    doneButton.forEach(item => {
+        item.addEventListener('click', event => {
+            item.parentElement.parentElement.firstChild.classList.add('clicked');
+        });
     });
+}
 
-    deleteButton.addEventListener('click', function() {
-        remove(list);
+//to delete a task
+function remove() {
+    let removeButton = document.querySelectorAll('.delete');
+    removeButton.forEach(item => {
+        item.addEventListener('click', event => {
+            item.parentElement.parentElement.remove();  
+        });
     });
 }
-  
-function done(span) {
-    span.classList.add('clicked');
-}
 
-function remove(list) {
-    document.querySelector('#display-list').removeChild(list);
-}
-
+//function runs when page is loaded or reloaded. It is called on line 
 function loadTodo() {
-    if(localStorage.getItem('todoList')) {
-        display.innerHTML = localStorage.getItem('todoList');
-        remove();
-    }
+    localStorage.getItem('todoList');
+    display.innerHTML = localStorage.getItem('todoList');
+
+    remove();
+
+    done();
 }
 
 loadTodo();
-
-
-
-// // var input = document.getElementById("myInput");
-
-// newTodo.addEventListener("keyup", function(event) {
-//   if (event.keyCode === 13) {
-//     // Cancel the default action, if needed
-//     event.preventDefault();
-//     // Trigger the button element with a click
-//     document.getElementById("add-to-list").click();
-//   }
-// });
