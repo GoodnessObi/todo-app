@@ -11,7 +11,7 @@ Version 2 features:
     - Has a done button which strikes the item on the list
     
 Version 3 features:
-    - List can be saved on local strorage
+    - List can be saved to local strorage
     - The enter key can be used in place of the add button to add input to list
 
-Looking forward to returnibg to this to incorporate React.
+Looking forward to returning to this to incorporate React.
