@@ -26,8 +26,23 @@ body {
 }
 
 #input-box,
-.display-container {
+.display-container,
+.storage-buttons-container {
     width: 100%;
+}
+
+.storage-buttons-container {
+    border-bottom: 2px solid #4f3961;
+}
+
+h1,
+p {
+    text-align: center;
+    color: #260a3d;
+}
+
+p {
+    margin-top: 0.5rem;
 }
 
 #input-box {
@@ -50,6 +65,7 @@ body {
     border-bottom: 2px solid #4f3961;
     padding-left: 0;
     list-style-position: none;
+    margin-bottom: 0;
 }
 
 li {
@@ -74,8 +90,50 @@ li {
     user-select: none;
 }
 
+#add-to-list {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #4f3961;
+    color: #fff;
+    outline: 0;
+    border: none;
+    outline: none;
+    font-family: 'Pacifico', cursive;
+}
+
+.storage-buttons {
+    margin: 0.5rem auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    width: 60%;
+}
+
+.save-to-storage,
+.clear-storage {
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: #4f3961;
+    color: #fff;
+    outline: 0;
+    border: none;
+    outline: none;
+    font-family: 'Pacifico', cursive;
+}
+
+#add-to-list:active,
+.save-to-storage:active,
+.clear-storage:active,
+#add-to-list:hover,
+.save-to-storage:hover,
+.clear-storage:hover {
+    background-color: #260a3d;
+}
+
 .change-button {
-    /* border: 2px solid red; */
     display: flex;
     flex-flow: row nowrap;
     width: 30%;
@@ -113,30 +171,6 @@ li {
     color: #260a3d;
 }
 
-h1,
-p {
-    text-align: center;
-    color: #260a3d;
-}
-
-#add-to-list {
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-    border-radius: 0.5rem;
-    background-color: #4f3961;
-    color: #fff;
-    outline: 0;
-    border: none;
-    outline: none;
-    font-family: 'Pacifico', cursive;
-}
-
-#add-to-list:active,
-#add-to-list:hover {
-    background-color: #260a3d;
-}
-
 @media (min-width: 900px) {
     .container {
         padding: 0 3rem;
@@ -156,32 +190,8 @@ p {
         width: 20%;
     }
 
-    /* .text-content {
-        width: 75%;
-    }
-
-    .change-button {
-        width: %;
-    } */
-
     .done,
     .delete {
         font-size: 1.25rem;
     }
 }
-
-@media (max-width: 400px) {
-    body,
-    .container {
-        background-color: #ea9085;;
-    }
-
-    .container {
-        border: none;
-        width: 100%
-    }
-
-    body {
-        padding: 0 2rem;
-    }
-}   
