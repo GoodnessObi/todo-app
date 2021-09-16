@@ -15,3 +15,9 @@ Version 3 features:
     - The enter key can be used in place of the add button to add input to list
 
 Looking forward to returning to this to incorporate React.
+
+## todo-app Update
+
+This app has been rebuilt with react. Also threw in some improvements.
+
+* Click [here](https://github.com/GoodnessObi/todo-app-v2) to see the [documentation and code](https://github.com/GoodnessObi/todo-app-v2)
