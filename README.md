@@ -20,4 +20,5 @@ Looking forward to returning to this to incorporate React.
 
 This app has been rebuilt with react. Also threw in some improvements.
 
-* Click [here](https://github.com/GoodnessObi/todo-app-v2) to see the [documentation and code](https://github.com/GoodnessObi/todo-app-v2)
+* Click [here](https://github.com/GoodnessObi/todo-app-v2) to see the [documentation and code](https://github.com/GoodnessObi/todo-app-v2).
+* Click [here](https://todo-appv2.netlify.app/) to view the deployed site.
